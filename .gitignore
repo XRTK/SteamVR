@@ -64,5 +64,5 @@ artifacts/
 ThirdParty/
 ThirdParty.meta
 --Version/
-XRTK.PlatformName/Assets/PlatformName/Profiles
-XRTK.PlatformName/Assets/PlatformName/Profiles.meta
+XRTK.SteamVR/Assets/XRTK.Generated/SteamVR/Profiles
+XRTK.SteamVR/Assets/XRTK.Generated/SteamVR/Profiles.meta
