@@ -40,7 +40,6 @@ namespace XRTK.SteamVR.Editor
                 NativeRootPath = Path.GetFullPath($"{SteamVRRootPath}{GIT_ROOT}Submodules/SteamVR/{NATIVE_ROOT_PATH}");
             }
 
-            Debug.Log(NativeRootPath);
             return Directory.Exists(NativeRootPath);
         }
 
