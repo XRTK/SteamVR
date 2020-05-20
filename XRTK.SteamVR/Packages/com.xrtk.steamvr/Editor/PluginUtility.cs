@@ -19,7 +19,20 @@ namespace XRTK.SteamVR.Editor
         private static readonly string SteamVRRootPath = PathFinderUtility.ResolvePath<IPathFinder>(typeof(SteamVRPathFinder));
         private static readonly string PluginPath = Path.GetFullPath($"{SteamVRRootPath}/Runtime/Plugins");
 
-        private static string NativeRootPath { get; set; }
+        private static string NativeRootPath
+        {
+            get
+            {
+                var path = Path.GetFullPath($"{SteamVRRootPath}{GIT_ROOT}{NATIVE_ROOT_PATH}");
+
+                if (!Directory.Exists(path))
+                {
+                    path = Path.GetFullPath($"{SteamVRRootPath}{GIT_ROOT}Submodules/SteamVR/{NATIVE_ROOT_PATH}");
+                }
+
+                return path;
+            }
+        }
 
         private static string NativeRuntime => Path.GetFullPath($"{NativeRootPath}/Runtime");
 
@@ -32,17 +45,7 @@ namespace XRTK.SteamVR.Editor
         }
 
         [MenuItem("Mixed Reality Toolkit/Tools/OpenVR/Update Plugin", true)]
-        private static bool UpdatePluginValidation()
-        {
-            NativeRootPath = Path.GetFullPath($"{SteamVRRootPath}{GIT_ROOT}{NATIVE_ROOT_PATH}");
-
-            if (!Directory.Exists(NativeRootPath))
-            {
-                NativeRootPath = Path.GetFullPath($"{SteamVRRootPath}{GIT_ROOT}Submodules/SteamVR/{NATIVE_ROOT_PATH}");
-            }
-
-            return Directory.Exists(NativeRootPath);
-        }
+        private static bool UpdatePluginValidation() => Directory.Exists(NativeRootPath);
 
         [MenuItem("Mixed Reality Toolkit/Tools/OpenVR/Update Plugin", false)]
         private static void UpdatePlugins()
