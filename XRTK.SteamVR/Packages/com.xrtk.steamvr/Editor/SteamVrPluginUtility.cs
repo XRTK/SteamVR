@@ -10,7 +10,7 @@ using XRTK.Utilities.Editor;
 namespace XRTK.SteamVR.Editor
 {
     [InitializeOnLoad]
-    public static class SteamVrPluginUtility
+    public static class SteamVRPluginUtility
     {
         private const string GIT_ROOT = "../../../../";
         private const string OPEN_VR_API = "openvr_api.dll";
@@ -36,11 +36,11 @@ namespace XRTK.SteamVR.Editor
 
         private static string NativeRuntime => Path.GetFullPath($"{NativeRootPath}/Runtime");
 
-        static SteamVrPluginUtility()
+        static SteamVRPluginUtility()
         {
-            if (!Directory.Exists(PluginPath) || EditorPreferences.Get($"Reimport_{nameof(SteamVrPluginUtility)}", false))
+            if (!Directory.Exists(PluginPath) || EditorPreferences.Get($"Reimport_{nameof(SteamVRPluginUtility)}", false))
             {
-                EditorPreferences.Set($"Reimport_{nameof(SteamVrPluginUtility)}", false);
+                EditorPreferences.Set($"Reimport_{nameof(SteamVRPluginUtility)}", false);
 
                 if (!Directory.Exists(NativeRootPath))
                 {
@@ -78,16 +78,16 @@ namespace XRTK.SteamVR.Editor
             }
         }
 
-        [MenuItem("Mixed Reality Toolkit/Tools/OpenVR/Reimport Plugins", true)]
+        [MenuItem("Mixed Reality Toolkit/Tools/SteamVR/Reimport Plugins", true)]
         private static bool UpdatePluginValidation() => Directory.Exists(NativeRootPath);
 
-        [MenuItem("Mixed Reality Toolkit/Tools/OpenVR/Reimport Plugins", false)]
+        [MenuItem("Mixed Reality Toolkit/Tools/SteamVR/Reimport Plugins", false)]
         private static void UpdatePlugins()
         {
             if (EditorUtility.DisplayDialog("Attention!",
-                "In order to reimport the plugins, we'll need to restart the editor, is this ok?", "Restart", "Cancel"))
+                "In order to reimport the SteamVR plugins, we'll need to restart the editor, is this ok?", "Restart", "Cancel"))
             {
-                EditorPreferences.Set($"Reimport_{nameof(SteamVrPluginUtility)}", true);
+                EditorPreferences.Set($"Reimport_{nameof(SteamVRPluginUtility)}", true);
                 EditorApplication.OpenProject(Directory.GetParent(Application.dataPath).FullName);
             }
         }
