@@ -1,0 +1,3 @@
+[submodule "Submodules/steamvr_unity_plugin"]
+	path = Submodules/steamvr_unity_plugin
+	url = https://github.com/ValveSoftware/steamvr_unity_plugin
