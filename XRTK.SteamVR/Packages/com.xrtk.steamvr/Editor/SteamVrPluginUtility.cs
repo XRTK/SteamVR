@@ -76,10 +76,10 @@ namespace XRTK.SteamVR.Editor
             }
         }
 
-        [MenuItem("Mixed Reality Toolkit/Tools/OpenVR/Update Plugin", true)]
+        [MenuItem("Mixed Reality Toolkit/Tools/OpenVR/Reimport Plugins", true)]
         private static bool UpdatePluginValidation() => Directory.Exists(NativeRootPath);
 
-        [MenuItem("Mixed Reality Toolkit/Tools/OpenVR/Update Plugin", false)]
+        [MenuItem("Mixed Reality Toolkit/Tools/OpenVR/Reimport Plugins", false)]
         private static void UpdatePlugins()
         {
             if (EditorUtility.DisplayDialog("Attention!",
