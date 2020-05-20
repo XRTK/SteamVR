@@ -40,6 +40,8 @@ namespace XRTK.SteamVR.Editor
         {
             if (!Directory.Exists(PluginPath) || EditorPreferences.Get($"Reimport_{nameof(SteamVrPluginUtility)}", false))
             {
+                EditorPreferences.Set($"Reimport_{nameof(SteamVrPluginUtility)}", false);
+
                 if (!Directory.Exists(NativeRootPath))
                 {
                     throw new Exception($"Failed to find {NativeRootPath}");
