@@ -40,7 +40,6 @@ namespace XRTK.SteamVR.Editor
             File.Copy($"{NativeRuntime}/x64/{OPEN_VR_API}", $"{PluginPath}/x64/{OPEN_VR_API}");
             File.Copy($"{NativeRuntime}/x64/{OPEN_VR_API}.meta", $"{PluginPath}/x64/{OPEN_VR_API}.meta");
 
-
             File.Copy($"{NativeRuntime}/openvr_api.cs", $"{PluginPath}/openvr_api.cs");
             File.Copy($"{NativeRoot}/License.md", $"{PluginPath}/Licnse.md");
             File.Copy($"{NativeRoot}/openvrLICENSE.md", $"{PluginPath}/openvrLICENSE.md");
