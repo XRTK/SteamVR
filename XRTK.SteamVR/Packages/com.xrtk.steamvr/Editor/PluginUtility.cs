@@ -1,6 +1,7 @@
 ﻿// Copyright (c) XRTK. All rights reserved.
 // Licensed under the MIT License. See LICENSE in the project root for license information.
 
+using System;
 using System.IO;
 using UnityEditor;
 using UnityEngine;
@@ -46,7 +47,10 @@ namespace XRTK.SteamVR.Editor
         [MenuItem("Mixed Reality Toolkit/Tools/OpenVR/Update Plugin", false)]
         private static void UpdatePlugins()
         {
-            Debug.Assert(Directory.Exists(NativeRootPath));
+            if (!Directory.Exists(NativeRootPath))
+            {
+                throw new Exception($"Failed to find {NativeRootPath}");
+            }
 
             if (Directory.Exists(PluginPath))
             {
