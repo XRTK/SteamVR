@@ -75,6 +75,8 @@ namespace XRTK.SteamVR.Editor
                 File.Copy($"{NativeRuntime}/openvr_api.cs", $"{PluginPath}/openvr_api.cs");
                 File.Copy($"{NativeRootPath}/License.md", $"{PluginPath}/Licnse.md");
                 File.Copy($"{NativeRootPath}/openvrLICENSE.md", $"{PluginPath}/openvrLICENSE.md");
+
+                EditorApplication.delayCall += () => AssetDatabase.Refresh(ImportAssetOptions.ForceUpdate);
             }
         }
 
