@@ -78,6 +78,39 @@ namespace XRTK.SteamVR.Editor
 
                 EditorApplication.delayCall += () => AssetDatabase.Refresh(ImportAssetOptions.ForceUpdate);
             }
+
+            if (Directory.Exists(PluginPath))
+            {
+                var rootPluginPath = $"{SteamVRRootPath}/Runtime/Plugins";
+
+                var x86Path = $"{rootPluginPath}/x86/{OPEN_VR_API}";
+                var x86Importer = AssetImporter.GetAtPath(x86Path) as PluginImporter;
+                Debug.Assert(x86Importer != null, $"Failed to load {x86Path}");
+                x86Importer.ClearSettings();
+                x86Importer.SetCompatibleWithAnyPlatform(false);
+                x86Importer.SetCompatibleWithEditor(true);
+                x86Importer.SetEditorData("CPU", "x86");
+                x86Importer.SetPlatformData(BuildTarget.NoTarget, "CPU", "x86");
+                x86Importer.SetCompatibleWithPlatform(BuildTarget.StandaloneWindows, true);
+                x86Importer.SetPlatformData(BuildTarget.StandaloneWindows, "CPU", "x86");
+                x86Importer.SetCompatibleWithPlatform(BuildTarget.WSAPlayer, true);
+                x86Importer.SetPlatformData(BuildTarget.WSAPlayer, "CPU", "X86");
+                x86Importer.SaveAndReimport();
+
+                var x64Path = $"{rootPluginPath}/x64/{OPEN_VR_API}";
+                var x64Importer = AssetImporter.GetAtPath(x64Path) as PluginImporter;
+                Debug.Assert(x64Importer != null, $"Failed to load {x64Path}");
+                x64Importer.ClearSettings();
+                x64Importer.SetCompatibleWithAnyPlatform(false);
+                x64Importer.SetCompatibleWithEditor(true);
+                x64Importer.SetEditorData("CPU", "x64");
+                x64Importer.SetPlatformData(BuildTarget.NoTarget, "CPU", "x64");
+                x64Importer.SetCompatibleWithPlatform(BuildTarget.StandaloneWindows64, true);
+                x64Importer.SetPlatformData(BuildTarget.StandaloneWindows64, "CPU", "x64");
+                x64Importer.SetCompatibleWithPlatform(BuildTarget.WSAPlayer, true);
+                x64Importer.SetPlatformData(BuildTarget.WSAPlayer, "CPU", "X64");
+                x64Importer.SaveAndReimport();
+            }
         }
 
         [MenuItem("Mixed Reality Toolkit/Tools/SteamVR/Reimport Plugins", true)]
