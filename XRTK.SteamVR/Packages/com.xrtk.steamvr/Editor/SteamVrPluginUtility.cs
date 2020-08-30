@@ -93,8 +93,6 @@ namespace XRTK.SteamVR.Editor
                 x86Importer.SetPlatformData(BuildTarget.NoTarget, "CPU", "x86");
                 x86Importer.SetCompatibleWithPlatform(BuildTarget.StandaloneWindows, true);
                 x86Importer.SetPlatformData(BuildTarget.StandaloneWindows, "CPU", "x86");
-                x86Importer.SetCompatibleWithPlatform(BuildTarget.WSAPlayer, true);
-                x86Importer.SetPlatformData(BuildTarget.WSAPlayer, "CPU", "X86");
                 x86Importer.SaveAndReimport();
 
                 var x64Path = $"{rootPluginPath}/x64/{OPEN_VR_API}";
@@ -107,8 +105,6 @@ namespace XRTK.SteamVR.Editor
                 x64Importer.SetPlatformData(BuildTarget.NoTarget, "CPU", "x64");
                 x64Importer.SetCompatibleWithPlatform(BuildTarget.StandaloneWindows64, true);
                 x64Importer.SetPlatformData(BuildTarget.StandaloneWindows64, "CPU", "x64");
-                x64Importer.SetCompatibleWithPlatform(BuildTarget.WSAPlayer, true);
-                x64Importer.SetPlatformData(BuildTarget.WSAPlayer, "CPU", "X64");
                 x64Importer.SaveAndReimport();
             }
         }
