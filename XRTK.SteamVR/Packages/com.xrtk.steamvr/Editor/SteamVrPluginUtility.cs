@@ -14,7 +14,7 @@ namespace XRTK.SteamVR.Editor
     {
         private const string GIT_ROOT = "../../../../";
         private const string OPEN_VR_API = "openvr_api.dll";
-        private const string NATIVE_ROOT_PATH = "Submodules/steamvr_unity_plugin";
+        private const string NATIVE_ROOT_PATH = "Submodules/unity-xr-plugin";
 
         private static readonly string SteamVRRootPath = PathFinderUtility.ResolvePath<IPathFinder>(typeof(SteamVRPathFinder));
         private static readonly string PluginPath = Path.GetFullPath($"{SteamVRRootPath}/Runtime/Plugins");
@@ -34,7 +34,9 @@ namespace XRTK.SteamVR.Editor
             }
         }
 
-        private static string NativeRuntime => Path.GetFullPath($"{NativeRootPath}/Runtime");
+        private static string PackageRoot => Path.GetFullPath($"{NativeRootPath}/com.valve.openvr");
+
+        private static string NativeRuntime => Path.GetFullPath($"{PackageRoot}/Runtime");
 
         static SteamVRPluginUtility()
         {
@@ -73,8 +75,7 @@ namespace XRTK.SteamVR.Editor
                 File.Copy($"{NativeRuntime}/x64/{OPEN_VR_API}", $"{PluginPath}/x64/{OPEN_VR_API}");
 
                 File.Copy($"{NativeRuntime}/openvr_api.cs", $"{PluginPath}/openvr_api.cs");
-                File.Copy($"{NativeRootPath}/License.md", $"{PluginPath}/Licnse.md");
-                File.Copy($"{NativeRootPath}/openvrLICENSE.md", $"{PluginPath}/openvrLICENSE.md");
+                File.Copy($"{PackageRoot}/LICENSE.md", $"{PluginPath}/LICENSE.md");
 
                 EditorApplication.delayCall += () => AssetDatabase.Refresh(ImportAssetOptions.ForceUpdate);
             }
