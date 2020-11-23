@@ -78,6 +78,7 @@ namespace XRTK.SteamVR.Editor
                 File.Copy($"{PackageRoot}/LICENSE.md", $"{PluginPath}/LICENSE.md");
 
                 EditorApplication.delayCall += () => AssetDatabase.Refresh(ImportAssetOptions.ForceUpdate);
+                return;
             }
 
             if (Directory.Exists(PluginPath))
@@ -85,6 +86,7 @@ namespace XRTK.SteamVR.Editor
                 var rootPluginPath = $"{SteamVRRootPath}/Runtime/Plugins";
 
                 var x86Path = $"{rootPluginPath}/x86/{OPEN_VR_API}";
+                Debug.Assert(File.Exists(x86Path), $"Library not found at {x86Path}");
                 var x86Importer = AssetImporter.GetAtPath(x86Path) as PluginImporter;
                 Debug.Assert(x86Importer != null, $"Failed to load {x86Path}");
                 x86Importer.ClearSettings();
@@ -97,6 +99,7 @@ namespace XRTK.SteamVR.Editor
                 x86Importer.SaveAndReimport();
 
                 var x64Path = $"{rootPluginPath}/x64/{OPEN_VR_API}";
+                Debug.Assert(File.Exists(x64Path), $"Library not found at {x64Path}");
                 var x64Importer = AssetImporter.GetAtPath(x64Path) as PluginImporter;
                 Debug.Assert(x64Importer != null, $"Failed to load {x64Path}");
                 x64Importer.ClearSettings();
