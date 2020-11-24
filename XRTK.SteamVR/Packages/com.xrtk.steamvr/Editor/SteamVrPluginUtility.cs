@@ -40,12 +40,9 @@ namespace XRTK.SteamVR.Editor
 
         static SteamVRPluginUtility()
         {
-            if (!EditorPreferences.Get($"Reimport_{nameof(SteamVRPluginUtility)}", false)) { return; }
-
-            if (!Directory.Exists(PluginPath))
+            if (!Directory.Exists(PluginPath) ||
+                EditorPreferences.Get($"Reimport_{nameof(SteamVRPluginUtility)}", true))
             {
-                EditorPreferences.Set($"Reimport_{nameof(SteamVRPluginUtility)}", false);
-
                 if (!Directory.Exists(NativeRootPath))
                 {
                     throw new Exception($"Failed to find {NativeRootPath}");
@@ -81,8 +78,12 @@ namespace XRTK.SteamVR.Editor
 
                 EditorApplication.delayCall += () => AssetDatabase.Refresh(ImportAssetOptions.ForceUpdate);
             }
-            else
+
+            if (!Directory.Exists(PluginPath) &&
+                EditorPreferences.Get($"Reimport_{nameof(SteamVRPluginUtility)}", false))
             {
+                EditorPreferences.Set($"Reimport_{nameof(SteamVRPluginUtility)}", false);
+
                 var rootPluginPath = $"{SteamVRRootPath}/Runtime/Plugins";
 
                 var x86Path = $"{rootPluginPath}/x86/{OPEN_VR_API}";
