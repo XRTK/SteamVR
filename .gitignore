@@ -64,6 +64,8 @@ artifacts/
 ThirdParty/
 ThirdParty.meta
 --Version/
+
+XRTK.SteamVR/Assets/XRTK.Generated/SteamVR.meta
 XRTK.SteamVR/Assets/XRTK.Generated/SteamVR/Profiles
 XRTK.SteamVR/Assets/XRTK.Generated/SteamVR/Profiles.meta
 XRTK.SteamVR/Packages/com.xrtk.steamvr/Runtime/Plugins
