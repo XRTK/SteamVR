@@ -4,7 +4,7 @@
 using System.IO;
 using UnityEditor;
 using UnityEngine;
-using XRTK.Utilities.Editor;
+using XRTK.Editor.Utilities;
 
 namespace XRTK.SteamVR.Editor
 {
