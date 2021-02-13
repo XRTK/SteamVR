@@ -13,9 +13,13 @@
   "version": "0.2.1",
   "unity": "2019.4",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/XRTK/SteamVR.git"
+  },
   "author": "XRTK Team (https://github.com/XRTK)",
   "dependencies": {
-    "com.xrtk.core": "0.2.1"
+    "com.xrtk.core": "0.2.7"
   },
   "profiles": [
     {
@@ -23,5 +27,5 @@
       "path": "Profiles~/"
     }
   ],
-  "unityRelease": "17f1"
+  "unityRelease": "19f1"
 }
